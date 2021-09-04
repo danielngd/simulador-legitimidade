@@ -24,5 +24,9 @@ class Imposto(models.Model):
     valor = models.FloatField()
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
 
+    @property
+    def valor_porcentagem(self):
+        return self.valor * 100
+
     def __str__(self) -> str:
         return "({}) {}".format(self.estado, self.nome)
